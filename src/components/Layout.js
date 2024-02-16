@@ -11,6 +11,14 @@ const Layout = () => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   // Function to handle the "Clear" button click inside DisplayComponent
+  const handleMoneySelect = (value) => {
+    setTotalAmount(prevAmount => prevAmount + value);
+  };
+  
+  const handleClearAmount = () => {
+    setTotalAmount(0);
+  };
+
   const onClear = () => {
     // Clear the selected numbers and total amount
     setSelectedNumbers([]);
@@ -31,13 +39,17 @@ const Layout = () => {
        <NumberCard 
        onSelectionChange={setSelectedNumbers}
        clearTriggered={clearTriggered}  />
-        <MoneyCard /> {/* MoneyCard component */}
+        <MoneyCard 
+          onMoneySelect={handleMoneySelect} 
+          isDisabled={selectedNumbers.length < 5} 
+        />
       </div>
       <div className="layout-right">
         {/* DisplayComponent shows the selected numbers and total amount */}
         <DisplayComponent 
           selectedNumbers={selectedNumbers}
           totalAmount={totalAmount}
+          onClearAmount={handleClearAmount} 
           onClear={onClear}
         />
       </div>

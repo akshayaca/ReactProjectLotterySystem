@@ -121,7 +121,10 @@ body{
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s; /* Transition effects */
 }
-
+.money-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
 .money-button:hover {
   background-color: #5f79a8; /* Darker shade on hover */
   transform: scale(1.1); /* Slight zoom effect */

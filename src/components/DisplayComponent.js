@@ -1,7 +1,8 @@
 // DisplayComponent.js
 import React from 'react';
+import "./Layout";
 
-const DisplayComponent = ({ selectedNumbers, totalAmount, onClear }) => {
+const DisplayComponent = ({ selectedNumbers, totalAmount,onClearAmount, onClear }) => {
   return (
     <div className="display-component">
       <div className="numbers-display">
@@ -15,6 +16,8 @@ const DisplayComponent = ({ selectedNumbers, totalAmount, onClear }) => {
       <div className="amount-display">
         <h4>Total Amount:</h4>
         <p>${totalAmount.toFixed(2)}</p>
+        <button className="clear-amount-button" onClick={onClearAmount}>Clear Amount</button>
+
       </div>
       <div className="display-buttons">
         <button className="cash-button">Cash</button>
