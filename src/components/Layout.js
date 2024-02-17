@@ -4,26 +4,36 @@ import NumberCard from './NumberCard'; // Adjust the path if necessary
 import MoneyCard from './MoneyCard'; // Adjust the path if necessary
 import DisplayComponent from './DisplayComponent'; // Import the DisplayComponent
 
-const Layout = () => {
+const Layout = ( ) => {
   // State to hold the selected numbers and total amount
   const [selectedNumbers, setSelectedNumbers] = useState([]);
   const [clearTriggered, setClearTriggered] = useState(false);
-  const [totalAmount, setTotalAmount] = useState(0);
+  const [totalAmount, settotalAmount] = useState(0);
+  
 
   // Function to handle the "Clear" button click inside DisplayComponent
   const handleMoneySelect = (value) => {
-    setTotalAmount(prevAmount => prevAmount + value);
+    settotalAmount(prevAmount => prevAmount + value);
   };
   
   const handleClearAmount = () => {
-    setTotalAmount(0);
+    settotalAmount(0);
+  };
+
+  const handleCash = () => {
+    // Check if there are selected numbers and the total amount is greater than 0
+    if (selectedNumbers.length > 0 && totalAmount > 0) {
+      alert(`Numbers Selected: ${selectedNumbers.join(', ')}\nTotal Amount: $${totalAmount.toFixed(2)}`);
+    } else {
+      alert("Please select ticket numbers and assign a money value before proceeding.");
+    }
   };
 
   const onClear = () => {
     // Clear the selected numbers and total amount
     setSelectedNumbers([]);
     setClearTriggered(true);
-    setTotalAmount(0);
+    settotalAmount(0);
   };
   useEffect(() => {
     if (clearTriggered) {
@@ -39,6 +49,8 @@ const Layout = () => {
        <NumberCard 
        onSelectionChange={setSelectedNumbers}
        clearTriggered={clearTriggered}  />
+      
+      
         <MoneyCard 
           onMoneySelect={handleMoneySelect} 
           isDisabled={selectedNumbers.length < 5} 
@@ -50,6 +62,7 @@ const Layout = () => {
           selectedNumbers={selectedNumbers}
           totalAmount={totalAmount}
           onClearAmount={handleClearAmount} 
+          onCash={handleCash}
           onClear={onClear}
         />
       </div>

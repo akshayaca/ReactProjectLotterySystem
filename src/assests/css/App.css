@@ -4,8 +4,9 @@
   align-items: center; /* Vertically centers the content */
   justify-content: center; /* Horizontally centers the content */
   height: 100px;
-  background: linear-gradient(to right, #5f79a8, #2a5298); /* Example gradient - adjust colors as needed */
-  color: #fcf7f7; /* Ensures text color is white for better contrast */
+  background: linear-gradient(to right, #b2a6a6, #9b8f8f); /* Example gradient - adjust colors as needed */
+  color: #0e0e0e; /* Ensures text color is white for better contrast */
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
   text-align: center; /* Aligns the text to the center */
   box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Adds a subtle shadow to the header */
 }
@@ -14,6 +15,7 @@
   font-size: 24px; /* Adjust size as needed */
   font-weight: bold;
   margin: 0; /* Removes default margin from h1 */
+  
 }
 body{
   /* Add this to your global CSS file, such as index.css or App.css */
@@ -45,12 +47,13 @@ body{
 }
 /* NumberCard.css */
 .number-card {
+  position: relative; 
   display: grid;
   height: 60%;
   grid-template-columns: repeat(5,1fr); /* 5-column grid */
   gap: 5px; /* Space between grid items */
   padding: 20px; /* Padding around the grid */
-  background-color: #a2a9b7;
+  background: linear-gradient(to right, #b2a6a6, #9b8f8f);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 10px;
@@ -63,8 +66,9 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e0e0e0;
-  border-radius: 0px;
+  background: linear-gradient(to right, #89a0b8, #768aa0);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 1px;
   cursor: pointer;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   transition: transform 0.3s, background-color 0.3s;
@@ -72,28 +76,28 @@ body{
 
 .number:hover {
   transform: scale(1.1); /* Zoom effect on hover */
-  background-color: #5f79a8; /* Darker on hover for feedback */
+  background: linear-gradient(to right, #5e5d5d, #989792);/* Darker on hover for feedback */
 }
 .number.selected {
-  border: 2px solid blue; /* Border to indicate selection */
+  border: 2px solid rgb(250, 0, 0); /* Border to indicate selection */
 }
 
 .random-button {
-  padding: 8px 16px; /* Padding inside the button */
-  background-color: #2a5298;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  /* Aligns the button to the end of the grid column */
-  grid-column: 6; /* Places the button in the 5th column */
-  grid-row: 4; /* Adjusts the row to position the button at the bottom */
+  position: absolute; /* Position the icon absolutely within .number-card */
+  bottom: 10px; /* Adjust the distance from the bottom */
+  right: 10px;
+    cursor: pointer;
+  color: #0f0e0e; /* Icon color */
+  transition: transform 0.3s; /* Smooth transformation on hover */
+  /* Adjust size as needed */
+  font-size: 48px; /* Example size, adjust as needed */
 }
+
 .random-button:hover {
-  background-color: #5f79a8; /* Darker on hover for feedback */
+  transform: scale(1.1); /* Zoom effect on hover */
+  color: #5e5d5d; /* Icon color change on hover */
 }
+
 
 .money-card {
   display: grid;
@@ -103,7 +107,7 @@ body{
   justify-content: auto;
   align-items: auto;
   max-width: 180px; /* Adjust width as needed */
-  background-color: #a2a9b7;
+  background: linear-gradient(to right, #b2a6a6, #9b8f8f);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin: 10px 300px; /* Center the card */
@@ -114,7 +118,7 @@ body{
   height: 70px; /* Diameter of the round button */
   border-radius: 50%; /* Make the button round */
   border: none;
-  background-color: #e0e0e0;
+  background: linear-gradient(to right, #89a0b8, #768aa0);
   color: rgb(2, 2, 2);
   font-weight: bold;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
@@ -125,9 +129,10 @@ body{
   cursor: not-allowed;
   opacity: 0.5;
 }
-.money-button:hover {
-  background-color: #5f79a8; /* Darker shade on hover */
-  transform: scale(1.1); /* Slight zoom effect */
+.money-button:not(:disabled):hover {
+  background-color: #5f79a8; /* Darker shade on hover for enabled buttons */
+  transform: scale(1.1); /* Slight zoom effect for enabled buttons */
+  background: linear-gradient(to right, #5e5d5d, #989792);/* Gradient for enabled buttons */
 }
 
 /* DisplayComponent.css */
@@ -136,7 +141,7 @@ body{
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-  background-color: #f9f9f9;
+  background: linear-gradient(to right, #b2a6a6, #9b8f8f);
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   margin: 10px;
@@ -146,13 +151,21 @@ body{
 .numbers-display, .amount-display {
   flex: 1;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #121111;
   font-family:Verdana, Geneva, Tahoma, sans-serif; /* Only for numbers-display */
 }
 
 .amount-display {
+ 
   border-bottom: none; /* No border for the last item */
+
 }
+
+.icon-on-side {
+  display: flex;
+  align-items: center;
+}
+
 
 .display-buttons {
   display: flex;
@@ -171,13 +184,25 @@ body{
 }
 
 .cash-button {
-  background-color: #4CAF50; /* Green color for cash button */
+  background: linear-gradient(to right, #aac193, #90a27d); /* Green color for cash button */
   color: white;
 }
 
+/* Clear All button */
 .clear-button {
-  background-color: #f44336; /* Red color for clear button */
-  color: white;
+  cursor: pointer;
+  background: linear-gradient(to right, #2d2d2d, #716f6f);
+  color: #e0e0e0;
+  
+  /* Add more styles as needed (size, etc.) */
+}
+
+/* Amount Clear button */
+.clear-icon {
+  cursor: pointer;
+  color: #000000;
+  margin-left: 10px;
+ 
 }
 
 /* Additional styling for list of numbers and total amount */

@@ -1,5 +1,6 @@
 // NumberCard.js
 import React, { useState,useEffect } from 'react';
+import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 
 
 const NumberCard = ({ onSelectionChange,clearTriggered }) => {
@@ -56,7 +57,8 @@ const NumberCard = ({ onSelectionChange,clearTriggered }) => {
           {number}
         </div>
       ))}
-      <button className="random-button" onClick={handleRandomSelection}>Random</button>
+      <GiPerspectiveDiceSixFacesRandom className="random-button" onClick={handleRandomSelection} title = "Go Random"/>
+     
     </div>
   );
 };
